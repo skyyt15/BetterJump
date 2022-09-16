@@ -23,11 +23,14 @@ namespace BestJump
         public override void OnEnabled()
         {
             Singleton = this;
+            Exiled.Events.Handlers.Player.Jumping += OnJump;
             base.OnEnabled();
         }
 
         public override void OnDisabled()
         {
+            Singleton = null;
+            Exiled.Events.Handlers.Player.Jumping -= OnJump;
             base.OnDisabled();
         }
 
